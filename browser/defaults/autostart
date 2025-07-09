@@ -1,0 +1,10 @@
+#!/bin/bash
+
+(
+    while true; do
+    ncat --sh-exec "ncat localhost 9223" -l 9222 --keep-open
+    sleep 10
+    done
+) &
+echo ${CHROME_CLI}
+wrapped-chromium ${CHROME_CLI}
