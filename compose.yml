@@ -1,0 +1,17 @@
+services:
+  browser:
+    build:
+      context: ./browser
+      dockerfile: ../Dockerfile
+    security_opt:
+      - seccomp=unconfined
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Istanbul
+      - CHROME_CLI=--remote-debugging-port=9223
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 9223:9222
+    shm_size: 1gb
